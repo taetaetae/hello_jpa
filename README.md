@@ -1,1 +1,1 @@
-## JPA Study, ( spring 이 없는 환경 )
+## JPA Study ( spring 이 없는 환경 )
