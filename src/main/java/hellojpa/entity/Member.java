@@ -5,16 +5,19 @@ import javax.persistence.*;
 @Entity
 public class Member {
 
-    @Id
+    @Id @GeneratedValue
     private Long id;
 
-    @Column(name = "USERNAME")
+    @Column(name ="USERNAME")
     private String name;
     private int age;
 
-    @Enumerated(EnumType.STRING)
-    private MemberType memberType;
+//    @Column(name = "TEAM_ID")
+//    private Long teamId;
 
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
 
     public Long getId() {
         return id;
@@ -40,11 +43,21 @@ public class Member {
         this.age = age;
     }
 
-    public MemberType getMemberType() {
-        return memberType;
+    public Team getTeam() {
+        return team;
     }
 
-    public void setMemberType(MemberType memberType) {
-        this.memberType = memberType;
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", team=" + team +
+                '}';
     }
 }
